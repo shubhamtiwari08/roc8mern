@@ -46,7 +46,7 @@ const LoginForm: React.FC = () => {
           <hr />
         </form>
         <p className="mt-6 text-center text-xs text-gray-600">
-          Don't Have an Account?{" "}
+          Don't Have an Account? 
           <Link href="/" className="ml-1 space-x-2 font-semibold text-black">
             <span>SIGN UP</span>
           </Link>
