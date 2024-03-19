@@ -7,6 +7,7 @@ const Interests: React.FC = () => {
       <h2 className="text-2xl text-center font-semibold mb-6">Create your account</h2>
       <p className="text-center text-xs">The next gen business Marketplace</p>
       <h3 className="text-center font-semibold">My saved Interes</h3>
+      
 
 
       </div> 
