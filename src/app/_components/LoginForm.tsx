@@ -39,7 +39,7 @@ const LoginForm: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full rounded bg-black px-4 py-2 mb-6 text-white"
+            className="mb-6 w-full rounded bg-black px-4 py-2 text-white"
           >
             LOGIN
           </button>
@@ -48,7 +48,7 @@ const LoginForm: React.FC = () => {
         <p className="mt-6 text-center text-xs text-gray-600">
           Don't Have an Account?{" "}
           <Link href="/" className="ml-1 space-x-2 font-semibold text-black">
-            SIGN UP
+            <span>SIGN UP</span>
           </Link>
         </p>
       </div>
