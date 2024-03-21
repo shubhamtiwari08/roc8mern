@@ -1,7 +1,35 @@
+"use client"
+
 import Link from "next/link";
-import React from "react";
+import { useState } from "react";
+import { api } from "~/trpc/react";
+ 
 
 const LoginForm: React.FC = () => {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const loginMutation = api.post.login.useMutation();
+
+  const handleLogin = async () => {
+    // Extract email and password from formData
+    const { email, password } = formData;
+    // Call login mutation with email and password
+    const data = await loginMutation.mutateAsync({ email, password });
+    // Store the token in local storage
+    localStorage.setItem("token", data.token);
+  };
+
+
+
   return (
     <div className="mt-10 flex justify-center">
       <div className="h-3/4 w-[30rem] rounded-lg border-2 bg-white px-16 py-10">
@@ -20,6 +48,8 @@ const LoginForm: React.FC = () => {
               type="text"
               id="email"
               name="email"
+              value={formData.email}
+              onChange={handleChange}
               className="mt-1 w-full rounded border border-gray-300 p-2"
             />
           </div>
@@ -34,11 +64,14 @@ const LoginForm: React.FC = () => {
               type="password"
               id="password"
               name="password"
+              value={formData.password}
+              onChange={handleChange}
               className="mt-1 w-full rounded border border-gray-300 p-2"
             />
           </div>
           <button
-            type="submit"
+            type="button"
+            onClick={handleLogin} // Call handleLogin on button click
             className="mb-6 w-full rounded bg-black px-4 py-2 text-white"
           >
             LOGIN

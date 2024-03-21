@@ -1,6 +1,17 @@
 import React from "react";
+import { api } from "~/trpc/react";
 
 const Interests: React.FC = () => {
+
+  type Category = {id:string, name:string}[]
+
+  const categories: Category = [
+    {id:"1", name:"shoes"},
+    {id:"2", name:"furniture"},
+    {id:"3", name:"jewellery"},
+    {id:"4", name:"women T-shirts"}
+  ]
+ 
   return (
     <div className="mt-10 flex justify-center">
       <div className="h-3/4 w-[30rem] rounded-lg border-2 bg-white px-16 py-10">
